@@ -1,0 +1,301 @@
+[
+{
+  "layer": "top",
+  "position": "top",
+  "autohide": false,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "margin": "5 8 0 8",
+
+  /* === Modules Order === */
+  "modules-left": [
+    "group/player"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "custom/vram",
+    "custom/audio",
+    "custom/mic",
+    "backlight",
+    "custom/powerprofile",
+    "custom/battery",
+    "custom/rogue-ap",
+    "custom/connections",
+    "custom/firewall",
+    "custom/ports",
+    "custom/antivirus",
+    "custom/wifi-pentest"
+  ],
+
+  /* === Groups === */
+  "group/player": {
+    "orientation": "horizontal",
+    "modules": [
+      "image#mpd-cover",
+      "custom/mpd-prev",
+      "custom/mpd-toggle",
+      "custom/mpd-next",
+      "mpd"
+    ]
+  },
+
+  /* === Clock === */
+  /* Change timezone to your region: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones */
+  "clock": {
+    "timezone": "America/Sao_Paulo",
+    "format": "󱑒 {:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  /* === Hardware Monitors === */
+  "custom/vram": {
+    "exec": "~/.config/waybar/scripts/vram.py",
+    "interval": 3,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true
+  },
+
+  /* === Audio === */
+  "custom/audio": {
+    "exec": "~/.config/waybar/scripts/audio.py",
+    "interval": 2,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "tooltip": true
+  },
+  "custom/mic": {
+    "exec": "~/.config/waybar/scripts/mic.py",
+    "interval": 2,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+    "tooltip": true
+  },
+
+  /* === Backlight — auto-detects your display device === */
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip-format": "Brightness: {percent}%",
+    "tooltip": true
+  },
+
+  /* === Power Profile === */
+  "custom/powerprofile": {
+    "exec": "~/.config/waybar/scripts/powerprofile.py",
+    "interval": 10,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true
+  },
+
+  /* === Battery === */
+  "custom/battery": {
+    "exec": "~/.config/waybar/scripts/battery.py",
+    "interval": 30,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true
+  },
+
+  /* === Security Cluster === */
+  "custom/rogue-ap": {
+    "exec": "~/.config/waybar/scripts/rogue_ap.py",
+    "interval": 3,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -- bash -c 'cd ~/rogue-ap && ./status.sh; read -rp \"\"'",
+    "on-click-right": "kitty -- bash -c 'cd ~/rogue-ap && sudo ./capture.sh; read -rp \"\"'",
+    "on-click-middle": "kitty -- bash -c 'cd ~/rogue-ap && sudo ./stop.sh; read -rp \"\"'",
+    "tooltip": true
+  },
+  "custom/connections": {
+    "exec": "~/.config/waybar/scripts/connections.py",
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -- bash -c 'sudo ss -tpn state established; read -rp \"Enter...\"'",
+    "on-click-right": "kitty -- bash -c 'sudo ss -tn state established; read -rp \"Enter...\"'",
+    "tooltip": true
+  },
+  "custom/firewall": {
+    "exec": "~/.config/waybar/scripts/firewall.py",
+    "interval": 15,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -- ~/.config/waybar/scripts/fw-ops.sh panel",
+    "on-click-right": "kitty -- ~/.config/waybar/scripts/fw-ops.sh status",
+    "tooltip": true
+  },
+  "custom/ports": {
+    "exec": "~/.config/waybar/scripts/ports.py",
+    "interval": 10,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -- bash -c 'ss -tlnp; read -rp \"Enter...\"'",
+    "on-click-right": "kitty -- bash -c 'ss -ulnp; read -rp \"Enter...\"'",
+    "tooltip": true
+  },
+  "custom/antivirus": {
+    "exec": "~/.config/waybar/scripts/antivirus.py",
+    "interval": 30,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -e sh -c 'tail -100 /var/log/clamav/clamd.log | less'",
+    "on-click-right": "kitty -e sh -c 'sudo freshclam; echo; read -p \"Press Enter...\"'",
+    "on-click-middle": "kitty -- ~/.config/waybar/scripts/clamav_scan.sh",
+    "tooltip": true
+  },
+  /* Change wlan0 to your wireless interface name (check with: ip link show) */
+  "custom/wifi-pentest": {
+    "exec": "~/.config/waybar/scripts/wifi_pentest.py",
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "kitty -e nmtui",
+    "on-click-right": "kitty -e sh -c 'sudo ip link set dev wlan0 down && sudo macchanger -r wlan0 && sudo ip link set dev wlan0 up'",
+    "on-click-middle": "wireshark",
+    "tooltip": true
+  },
+
+  /* === Tray & Power === */
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "custom/power": {
+    "format": " ",
+    "on-click": "nwg-bar",
+    "tooltip": false
+  },
+
+  /* === MPD Player === */
+  "image#mpd-cover": {
+    "exec": "~/.config/waybar/scripts/mpd-cover.sh",
+    "size": 32,
+    "interval": 2,
+    "signal": 7,
+    "on-click": "kitty -e ncmpcpp",
+    "tooltip": false
+  },
+  "custom/mpd-prev": {
+    "format": "󰒮",
+    "on-click": "mpc prev && pkill -RTMIN+7 waybar",
+    "tooltip": false
+  },
+  "custom/mpd-toggle": {
+    "exec": "~/.config/waybar/scripts/mpd-toggle-icon.sh",
+    "interval": 2,
+    "format": "{}",
+    "on-click": "mpc toggle",
+    "tooltip": false
+  },
+  "custom/mpd-next": {
+    "format": "󰒭",
+    "on-click": "mpc next && pkill -RTMIN+7 waybar",
+    "tooltip": false
+  },
+  "mpd": {
+    "format": "󰎆 {title} — {artist}",
+    "format-stopped": "󰝛",
+    "format-disconnected": "󰝛 mpd off",
+    "format-paused": "󰏤 {title} — {artist}",
+    "max-length": 40,
+    "interval": 2,
+    "on-click": "kitty -e ncmpcpp",
+    "on-click-right": "mpc toggle",
+    "on-scroll-up": "mpc prev",
+    "on-scroll-down": "mpc next",
+    "tooltip-format": "{artist}\n{album}\n{title}  {elapsedTime:%M:%S} / {totalTime:%M:%S}",
+    "tooltip": true
+  }
+},
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 36,
+  "margin": "0 8 5 8",
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/terminal",
+    "custom/browser",
+    "custom/files",
+    "custom/editor"
+  ],
+  "modules-center": [
+    "wlr/taskbar"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/archicon",
+    "custom/power"
+  ],
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {}
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "spacing": 6,
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "tooltip-format": "{title}"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "custom/terminal": {
+    "format": "󰒉 ",
+    "on-click": "kitty",
+    "tooltip-format": "Terminal",
+    "tooltip": true
+  },
+  "custom/browser": {
+    "format": "󰊯 ",
+    "on-click": "google-chrome-stable",
+    "tooltip-format": "Chrome",
+    "tooltip": true
+  },
+  "custom/files": {
+    "format": "󰉋 ",
+    "on-click": "kitty -e yazi",
+    "tooltip-format": "Yazi",
+    "tooltip": true
+  },
+  "custom/editor": {
+    "format": "󰏫 ",
+    "on-click": "kitty -e nvim",
+    "tooltip-format": "Neovim",
+    "tooltip": true
+  },
+  "custom/archicon": {
+    "format": "󰍉 ",
+    "on-click": "wofi --show drun",
+    "tooltip": false
+  },
+  "custom/power": {
+    "format": "󰐥 ",
+    "on-click": "nwg-bar",
+    "tooltip": false
+  }
+}
+]

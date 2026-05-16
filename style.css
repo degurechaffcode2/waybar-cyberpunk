@@ -1,0 +1,602 @@
+/* ═══════════════════════════════════════════════════════════
+   WAYBAR — Cyberpunk Tokyo
+   ═══════════════════════════════════════════════════════════ */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "MesloLGS Nerd Font", "JetBrains Mono Nerd Font", monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+/* ── BARRA ──────────────────────────────────────────────── */
+window#waybar {
+    background: rgba(7, 8, 16, 0.95);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.25);
+    color: #c8d0e7;
+}
+
+/* ── PILL BASE ──────────────────────────────────────────── */
+#backlight,
+#custom-vram,
+#custom-audio,
+#custom-mic,
+#custom-powerprofile,
+#custom-battery,
+#custom-rogue-ap,
+#custom-connections,
+#custom-firewall,
+#custom-ports,
+#custom-antivirus,
+#custom-wifi-pentest,
+#tray,
+#workspaces,
+#clock {
+    padding: 0 10px;
+    margin: 2px 2px;
+    border-radius: 5px;
+    background: #0d0e1c;
+    border: 1px solid rgba(0, 229, 255, 0.08);
+    transition: all 0.2s ease;
+}
+
+#backlight:hover,
+#custom-vram:hover,
+#custom-audio:hover,
+#custom-mic:hover,
+#custom-powerprofile:hover,
+#custom-battery:hover,
+#custom-rogue-ap:hover,
+#custom-connections:hover,
+#custom-firewall:hover,
+#custom-ports:hover,
+#custom-antivirus:hover,
+#custom-wifi-pentest:hover,
+#tray:hover,
+#clock:hover {
+    background: rgba(0, 229, 255, 0.05);
+    border-color: rgba(0, 229, 255, 0.28);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.12);
+}
+
+/* ── ARCHICON ───────────────────────────────────────────── */
+#custom-archicon {
+    padding: 0 8px;
+    margin: 2px 2px;
+    border-radius: 5px;
+    background: #00e5ff;
+    color: #070810;
+    font-weight: bold;
+    border: 1px solid #00e5ff;
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.45);
+    transition: all 0.2s ease;
+}
+
+#custom-archicon:hover {
+    background: #ffffff;
+    box-shadow: 0 0 22px rgba(0, 229, 255, 0.8);
+}
+
+/* ── WORKSPACES ─────────────────────────────────────────── */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 9px;
+    color: #3a3f5c;
+    background: transparent;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #070810;
+    background: #00e5ff;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+#workspaces button:hover {
+    color: #00e5ff;
+    background: rgba(0, 229, 255, 0.08);
+}
+
+/* ── CLOCK ──────────────────────────────────────────────── */
+#clock {
+    color: #00e5ff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.1);
+}
+
+/* ── TASKBAR ────────────────────────────────────────────── */
+#taskbar {
+    background: transparent;
+    padding: 0;
+    margin: 2px 2px;
+}
+
+#taskbar button {
+    padding: 0 6px;
+    margin: 0 1px;
+    border-radius: 5px;
+    background: #0d0e1c;
+    border: 1px solid rgba(0, 229, 255, 0.06);
+    transition: all 0.2s ease;
+}
+
+#taskbar button:hover,
+#taskbar button.active {
+    background: rgba(0, 229, 255, 0.07);
+    border-color: rgba(0, 229, 255, 0.22);
+}
+
+/* ── ÁUDIO ──────────────────────────────────────────────── */
+#custom-audio              { color: #00b4ff; }
+#custom-audio.audio-muted  { color: #3a3f5c; }
+#custom-audio.audio-off    { color: #3a3f5c; }
+#custom-audio.audio-loud   { color: #ff2055; text-shadow: 0 0 7px rgba(255,32,85,0.5); }
+#custom-audio.audio-high   { color: #ffcc00; }
+#custom-audio.audio-mid    { color: #00b4ff; }
+#custom-audio.audio-low    { color: #00b4ff; }
+
+/* ── MICROFONE ──────────────────────────────────────────── */
+#custom-mic             { color: #a855f7; }
+#custom-mic.mic-active  { color: #a855f7; }
+#custom-mic.mic-muted   {
+    color: #ff2055;
+    text-shadow: 0 0 7px rgba(255,32,85,0.5);
+}
+
+/* ── PERFIL DE DESEMPENHO ───────────────────────────────── */
+#custom-powerprofile                      { color: #a855f7; }
+#custom-powerprofile.profile-balanced     { color: #a855f7; }
+#custom-powerprofile.profile-power-saver  { color: #00ff9f; }
+#custom-powerprofile.profile-performance  {
+    color: #ff2055;
+    text-shadow: 0 0 7px rgba(255, 32, 85, 0.5);
+}
+
+/* ── BATERIA ────────────────────────────────────────────── */
+#custom-battery               { color: #00ff9f; }
+#custom-battery.bat-charging  {
+    color: #00e5ff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+#custom-battery.bat-full      { color: #00ff9f; }
+#custom-battery.bat-ok        { color: #00ff9f; }
+#custom-battery.bat-warning   { color: #ffcc00; text-shadow: 0 0 6px rgba(255,204,0,0.4); }
+#custom-battery.bat-critical  {
+    color: #ff2055;
+    border-color: rgba(255, 32, 85, 0.35);
+    animation: blink-critical 0.5s linear infinite alternate;
+}
+
+/* ── VRAM ───────────────────────────────────────────────── */
+#custom-vram           { color: #00ff9f; }
+#custom-vram.vram-ok   { color: #00ff9f; }
+#custom-vram.vram-mid  { color: #ffcc00; }
+#custom-vram.vram-high { color: #ff2055; text-shadow: 0 0 7px rgba(255,32,85,0.5); }
+
+/* ── BACKLIGHT ──────────────────────────────────────────── */
+#backlight {
+    color: #f5ff80;
+}
+
+#backlight:hover {
+    color: #ffff00;
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.55);
+}
+
+/* ── POWER PROFILES ─────────────────────────────────────── */
+#power-profiles-daemon            { color: #a855f7; }
+#power-profiles-daemon.balanced   { color: #a855f7; }
+#power-profiles-daemon.power-saver { color: #00ff9f; }
+#power-profiles-daemon.performance {
+    color: #ff2055;
+    text-shadow: 0 0 7px rgba(255, 32, 85, 0.5);
+}
+
+/* ── BATTERY ────────────────────────────────────────────── */
+#battery          { color: #00ff9f; }
+#battery.charging {
+    color: #00e5ff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+#battery.plugged  {
+    color: #00ff9f;
+    text-shadow: 0 0 6px rgba(0, 255, 159, 0.4);
+}
+#battery.warning  {
+    color: #ffcc00;
+    text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
+}
+#battery.critical:not(.charging) {
+    color: #ff2055;
+    border-color: rgba(255, 32, 85, 0.35);
+    animation: blink-critical 0.5s linear infinite alternate;
+}
+
+@keyframes blink-critical {
+    to {
+        background: rgba(255, 32, 85, 0.12);
+        box-shadow: 0 0 14px rgba(255, 32, 85, 0.55);
+    }
+}
+
+/* ── SECURITY CLUSTER ───────────────────────────────────── */
+
+/* — Rogue AP — */
+#custom-rogue-ap          { color: #556080; }
+#custom-rogue-ap.ap-off   { color: #3a3f5c; }
+#custom-rogue-ap.ap-on    {
+    color: #ffcc00;
+    text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
+}
+#custom-rogue-ap.ap-clients {
+    color: #00ff9f;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
+    border-color: rgba(0, 255, 159, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 159, 0.15);
+}
+#custom-rogue-ap.ap-error {
+    color: #ff2055;
+    font-weight: bold;
+    animation: blink-threat 0.8s step-start infinite;
+}
+
+/* — Connections — */
+#custom-connections            { color: #3a3f5c; }
+#custom-connections.conn-idle  { color: #3a3f5c; }
+#custom-connections.conn-few   { color: #00ff9f; }
+#custom-connections.conn-many  { color: #ffcc00; }
+#custom-connections.conn-high  { color: #ff8c00; }
+#custom-connections.conn-risky {
+    color: #ff2055;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 32, 85, 0.7);
+    border-color: rgba(255, 32, 85, 0.35);
+    box-shadow: 0 0 10px rgba(255, 32, 85, 0.2);
+}
+
+/* — Firewall — */
+#custom-firewall          { color: #3a3f5c; }
+#custom-firewall.fw-drop  { color: #00ff9f; }
+#custom-firewall.fw-open  { color: #ffcc00; }
+#custom-firewall.fw-off   {
+    color: #ff2055;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 32, 85, 0.7);
+    border-color: rgba(255, 32, 85, 0.35);
+    box-shadow: 0 0 10px rgba(255, 32, 85, 0.2);
+}
+
+/* — Ports — */
+#custom-ports             { color: #00ff9f; }
+#custom-ports.ports-clean { color: #00ff9f; }
+#custom-ports.ports-some  { color: #f5ff80; }
+#custom-ports.ports-many  { color: #ffcc00; }
+#custom-ports.ports-risky {
+    color: #ff2055;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 32, 85, 0.7);
+    border-color: rgba(255, 32, 85, 0.35);
+    box-shadow: 0 0 10px rgba(255, 32, 85, 0.2);
+}
+
+/* — Antivírus — */
+#custom-antivirus          { color: #00ff9f; }
+#custom-antivirus.av-stale { color: #ffcc00; }
+#custom-antivirus.av-down  {
+    color: #ff2055;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 32, 85, 0.7);
+}
+#custom-antivirus.av-threat {
+    color: #ff2055;
+    font-weight: bold;
+    border-color: rgba(255, 32, 85, 0.45);
+    box-shadow: 0 0 12px rgba(255, 32, 85, 0.35);
+    animation: blink-threat 0.8s step-start infinite;
+}
+
+@keyframes blink-threat {
+    50% { opacity: 0.25; box-shadow: none; }
+}
+
+/* — WiFi / Pentest — */
+#custom-wifi-pentest              { color: #00ff9f; }
+#custom-wifi-pentest.disconnected { color: #3a3f5c; }
+#custom-wifi-pentest.exposed      {
+    color: #ff2055;
+    text-shadow: 0 0 7px rgba(255, 32, 85, 0.5);
+    border-color: rgba(255, 32, 85, 0.28);
+}
+#custom-wifi-pentest.monitor-mode {
+    color: #a855f7;
+    font-weight: bold;
+    text-shadow: 0 0 9px rgba(168, 85, 247, 0.65);
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.18);
+}
+#custom-wifi-pentest.vpn {
+    color: #00e5ff;
+    text-shadow: 0 0 6px rgba(0, 229, 255, 0.4);
+}
+#custom-wifi-pentest.dns-leak {
+    color: #ff2055;
+    font-weight: bold;
+    animation: blink-threat 0.8s step-start infinite;
+}
+
+/* ── POWER BUTTON ───────────────────────────────────────── */
+#custom-power {
+    padding: 0 10px;
+    margin: 2px 2px;
+    border-radius: 5px;
+    background: #0d0e1c;
+    color: #ff2055;
+    border: 1px solid rgba(255, 32, 85, 0.18);
+    transition: all 0.2s ease;
+}
+
+#custom-power:hover {
+    background: rgba(255, 32, 85, 0.08);
+    border-color: rgba(255, 32, 85, 0.45);
+    box-shadow: 0 0 10px rgba(255, 32, 85, 0.28);
+    text-shadow: 0 0 8px rgba(255, 32, 85, 0.7);
+}
+
+/* ── TRAY ───────────────────────────────────────────────── */
+#tray { color: #3a3f5c; }
+#tray > .passive        { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+/* ── TOOLTIP ────────────────────────────────────────────── */
+tooltip {
+    background: rgba(7, 8, 16, 0.97);
+    border: 1px solid rgba(0, 229, 255, 0.28);
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+tooltip label {
+    color: #c8d0e7;
+    padding: 8px 12px;
+}
+
+/* ── MPD ────────────────────────────────────────────────── */
+#mpd {
+    color: #00e5ff;
+    background: #0d0e1c;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    border-radius: 8px;
+    padding: 0 8px;
+    margin: 3px 4px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+#mpd:hover {
+    background: rgba(0, 229, 255, 0.08);
+    border-color: rgba(0, 229, 255, 0.45);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.25);
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+}
+
+#mpd.paused {
+    color: #ffcc00;
+    border-color: rgba(255, 204, 0, 0.18);
+}
+
+#mpd.paused:hover {
+    border-color: rgba(255, 204, 0, 0.45);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.25);
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
+}
+
+#mpd.stopped,
+#mpd.disconnected {
+    color: #3a3f5c;
+    border-color: rgba(58, 63, 92, 0.3);
+}
+
+/* ── PLAYER GROUP ───────────────────────────────────────── */
+#group-player {
+    background: #0d0e1c;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    border-radius: 8px;
+    margin: 3px 4px;
+    padding: 0 4px;
+}
+
+image#mpd-cover {
+    border-radius: 6px;
+    margin: 3px 4px 3px 3px;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+#custom-mpd-prev,
+#custom-mpd-next {
+    color: #3a3f5c;
+    font-size: 14px;
+    padding: 0 4px;
+    transition: color 0.15s ease;
+}
+
+#custom-mpd-prev:hover,
+#custom-mpd-next:hover {
+    color: #00e5ff;
+}
+
+#custom-mpd-toggle {
+    color: #00e5ff;
+    font-size: 16px;
+    padding: 0 4px;
+    transition: color 0.15s ease;
+}
+
+#custom-mpd-toggle:hover {
+    color: #4decff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+}
+
+/* ── BARRA INFERIOR ─────────────────────────────────────── */
+window#waybar.bottom {
+    background: rgba(7, 8, 16, 0.92);
+    border-top: 1px solid rgba(0, 229, 255, 0.12);
+    border-radius: 10px;
+}
+
+/* Workspaces na barra inferior */
+window#waybar.bottom #workspaces button {
+    color: #3a3f5c;
+    background: transparent;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 2px 2px;
+    font-size: 12px;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+window#waybar.bottom #workspaces button.active {
+    color: #070810;
+    background: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
+window#waybar.bottom #workspaces button:hover {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.3);
+    background: rgba(0, 229, 255, 0.08);
+}
+
+window#waybar.bottom #workspaces button.urgent {
+    color: #070810;
+    background: #ff2055;
+}
+
+/* Taskbar na barra inferior */
+window#waybar.bottom #taskbar button {
+    background: rgba(13, 14, 28, 0.8);
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin: 2px 2px;
+    border: 1px solid rgba(58, 63, 92, 0.3);
+    transition: all 0.15s ease;
+}
+
+window#waybar.bottom #taskbar button.active {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 6px rgba(0, 229, 255, 0.2);
+}
+
+window#waybar.bottom #taskbar button:hover {
+    background: rgba(0, 229, 255, 0.08);
+    border-color: rgba(0, 229, 255, 0.25);
+}
+
+/* Tray, launcher e power na barra inferior */
+window#waybar.bottom #tray {
+    color: #3a3f5c;
+    padding: 0 6px;
+}
+
+window#waybar.bottom #custom-archicon {
+    color: #00e5ff;
+    background: #0d0e1c;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    border-radius: 8px;
+    padding: 0 10px;
+    margin: 3px 3px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+window#waybar.bottom #custom-archicon:hover {
+    background: rgba(0, 229, 255, 0.10);
+    border-color: rgba(0, 229, 255, 0.45);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+window#waybar.bottom #custom-power {
+    color: #ff2055;
+    background: #0d0e1c;
+    border: 1px solid rgba(255, 32, 85, 0.18);
+    border-radius: 8px;
+    padding: 0 10px;
+    margin: 3px 3px;
+    transition: all 0.2s ease;
+}
+
+window#waybar.bottom #custom-power:hover {
+    background: rgba(255, 32, 85, 0.08);
+    border-color: rgba(255, 32, 85, 0.45);
+    box-shadow: 0 0 10px rgba(255, 32, 85, 0.28);
+}
+
+/* ── ATALHOS BARRA INFERIOR ─────────────────────────────── */
+window#waybar.bottom #custom-terminal,
+window#waybar.bottom #custom-browser,
+window#waybar.bottom #custom-files,
+window#waybar.bottom #custom-editor,
+window#waybar.bottom #custom-onlyoffice,
+window#waybar.bottom #custom-discord,
+window#waybar.bottom #custom-antigravity {
+    background: transparent;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 2px 1px;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+window#waybar.bottom #custom-terminal    { color: #00e5ff; }
+window#waybar.bottom #custom-browser     { color: #ffcc00; }
+window#waybar.bottom #custom-files       { color: #00ff9f; }
+window#waybar.bottom #custom-editor      { color: #c084fc; }
+window#waybar.bottom #custom-onlyoffice  { color: #00b4ff; }
+window#waybar.bottom #custom-discord     { color: #a855f7; }
+window#waybar.bottom #custom-antigravity { color: #ff2055; }
+
+window#waybar.bottom #custom-terminal:hover    { text-shadow: 0 0 10px rgba(0,229,255,0.9);   opacity: 0.8; }
+window#waybar.bottom #custom-browser:hover     { text-shadow: 0 0 10px rgba(255,204,0,0.9);   opacity: 0.8; }
+window#waybar.bottom #custom-files:hover       { text-shadow: 0 0 10px rgba(0,255,159,0.9);   opacity: 0.8; }
+window#waybar.bottom #custom-editor:hover      { text-shadow: 0 0 10px rgba(192,132,252,0.9); opacity: 0.8; }
+window#waybar.bottom #custom-onlyoffice:hover  { text-shadow: 0 0 10px rgba(0,180,255,0.9);   opacity: 0.8; }
+window#waybar.bottom #custom-discord:hover     { text-shadow: 0 0 10px rgba(168,85,247,0.9);  opacity: 0.8; }
+window#waybar.bottom #custom-antigravity:hover { text-shadow: 0 0 10px rgba(255,32,85,0.9);   opacity: 0.8; }
+
+window#waybar.bottom #custom-claude,
+window#waybar.bottom #custom-gemini {
+    background: transparent;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 2px 1px;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+window#waybar.bottom #custom-claude  { color: #ff9f4a; }
+window#waybar.bottom #custom-gemini  { color: #4decff; }
+
+window#waybar.bottom #custom-claude:hover  { text-shadow: 0 0 10px rgba(255,159,74,0.9);  opacity: 0.8; }
+window#waybar.bottom #custom-gemini:hover  { text-shadow: 0 0 10px rgba(77,236,255,0.9);  opacity: 0.8; }
+
+window#waybar.bottom #custom-ytmusic {
+    background: transparent;
+    border-radius: 6px;
+    padding: 1px 8px;
+    margin: 2px 1px;
+    font-size: 14px;
+    color: #ff2055;
+    transition: all 0.15s ease;
+}
+
+window#waybar.bottom #custom-ytmusic:hover { text-shadow: 0 0 10px rgba(255,32,85,0.9); opacity: 0.8; }
