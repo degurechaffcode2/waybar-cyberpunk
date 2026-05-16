@@ -1,3 +1,8 @@
+<div align="right">
+  <a href="README.md">🇺🇸 English</a> &nbsp;|&nbsp;
+  <a href="README.pt-BR.md">🇧🇷 Português</a>
+</div>
+
 # Waybar Cyberpunk Tokyo
 
 A Waybar configuration with a dark cyberpunk aesthetic (Tokyo Night / Dracula palette) featuring a rich security monitoring cluster, hardware monitors with styled tooltips, and a dual-bar layout for Hyprland.
@@ -73,7 +78,7 @@ sudo pacman -S waybar python pipewire wireplumber \
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/waybar-cyberpunk.git
+git clone https://github.com/degurechaffcode2/waybar-cyberpunk.git
 cd waybar-cyberpunk
 chmod +x install.sh
 ./install.sh
