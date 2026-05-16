@@ -9,8 +9,10 @@ Configuração de Waybar com estética cyberpunk dark (paleta Tokyo Night / Drac
 
 ## Preview
 
-> Barra superior: VRAM · Áudio · Microfone · Brilho · Perfil de Desempenho · Bateria · Cluster de segurança  
-> Barra inferior: Workspaces · Atalhos de apps · Taskbar · Tray
+![Waybar Cyberpunk Tokyo](assets/preview.png)
+
+> **Barra superior:** VRAM · Áudio · Microfone · Brilho · Perfil de Desempenho · Bateria · Cluster de segurança  
+> **Barra inferior:** Workspaces · Atalhos de apps · Taskbar · Tray
 
 ## Funcionalidades
 

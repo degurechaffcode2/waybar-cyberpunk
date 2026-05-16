@@ -9,8 +9,10 @@ A Waybar configuration with a dark cyberpunk aesthetic (Tokyo Night / Dracula pa
 
 ## Preview
 
-> Top bar: VRAM · Audio · Mic · Brightness · Power Profile · Battery · Security cluster  
-> Bottom bar: Workspaces · App shortcuts · Taskbar · Tray
+![Waybar Cyberpunk Tokyo](assets/preview.png)
+
+> **Top bar:** VRAM · Audio · Mic · Brightness · Power Profile · Battery · Security cluster  
+> **Bottom bar:** Workspaces · App shortcuts · Taskbar · Tray
 
 ## Features
 

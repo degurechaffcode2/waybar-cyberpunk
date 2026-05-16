@@ -8,4 +8,4 @@ venv/
 *.bak.*
 *.backup
 *.old
-/preview*.png
+preview*.png.bak
