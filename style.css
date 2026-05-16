@@ -24,7 +24,6 @@ window#waybar {
 #custom-mic,
 #custom-powerprofile,
 #custom-battery,
-#custom-rogue-ap,
 #custom-connections,
 #custom-firewall,
 #custom-ports,
@@ -47,7 +46,6 @@ window#waybar {
 #custom-mic:hover,
 #custom-powerprofile:hover,
 #custom-battery:hover,
-#custom-rogue-ap:hover,
 #custom-connections:hover,
 #custom-firewall:hover,
 #custom-ports:hover,
@@ -227,25 +225,6 @@ window#waybar {
 
 /* ── SECURITY CLUSTER ───────────────────────────────────── */
 
-/* — Rogue AP — */
-#custom-rogue-ap          { color: #556080; }
-#custom-rogue-ap.ap-off   { color: #3a3f5c; }
-#custom-rogue-ap.ap-on    {
-    color: #ffcc00;
-    text-shadow: 0 0 6px rgba(255, 204, 0, 0.4);
-}
-#custom-rogue-ap.ap-clients {
-    color: #00ff9f;
-    font-weight: bold;
-    text-shadow: 0 0 8px rgba(0, 255, 159, 0.5);
-    border-color: rgba(0, 255, 159, 0.3);
-    box-shadow: 0 0 10px rgba(0, 255, 159, 0.15);
-}
-#custom-rogue-ap.ap-error {
-    color: #ff2055;
-    font-weight: bold;
-    animation: blink-threat 0.8s step-start infinite;
-}
 
 /* — Connections — */
 #custom-connections            { color: #3a3f5c; }

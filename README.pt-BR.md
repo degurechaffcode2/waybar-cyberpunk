@@ -34,7 +34,6 @@ Configuração de Waybar com estética cyberpunk dark (paleta Tokyo Night / Drac
 | `custom/ports` | Portas abertas (externas vs loopback, portas de risco destacadas) |
 | `custom/antivirus` | Status do daemon ClamAV + log de ameaças |
 | `custom/wifi-pentest` | Estado da interface Wi-Fi, detecção de VPN, modo monitor |
-| `custom/rogue-ap` | Monitor de sessão Rogue AP (requer [rogue-ap](https://github.com/)) |
 
 ### Player
 Controles MPD com capa do álbum, informações da faixa e integração com ncmpcpp.
@@ -115,7 +114,7 @@ Ou defina permanentemente no seu perfil de shell (`~/.bashrc`, `~/.zshrc`).
 Remova `custom/vram` de `modules-right` em `config.jsonc`.
 
 ### Sem necessidade do cluster de segurança
-Os módulos `connections`, `firewall`, `ports`, `antivirus`, `wifi-pentest` e `rogue-ap` podem ser removidos de `modules-right` se não forem necessários.
+Os módulos `connections`, `firewall`, `ports`, `antivirus` e `wifi-pentest` podem ser removidos de `modules-right` se não forem necessários.
 
 ## Estilo dos Tooltips
 

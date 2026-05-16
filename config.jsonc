@@ -22,7 +22,6 @@
     "backlight",
     "custom/powerprofile",
     "custom/battery",
-    "custom/rogue-ap",
     "custom/connections",
     "custom/firewall",
     "custom/ports",
@@ -109,16 +108,6 @@
   },
 
   /* === Security Cluster === */
-  "custom/rogue-ap": {
-    "exec": "~/.config/waybar/scripts/rogue_ap.py",
-    "interval": 3,
-    "return-type": "json",
-    "format": "{}",
-    "on-click": "kitty -- bash -c 'cd ~/rogue-ap && ./status.sh; read -rp \"\"'",
-    "on-click-right": "kitty -- bash -c 'cd ~/rogue-ap && sudo ./capture.sh; read -rp \"\"'",
-    "on-click-middle": "kitty -- bash -c 'cd ~/rogue-ap && sudo ./stop.sh; read -rp \"\"'",
-    "tooltip": true
-  },
   "custom/connections": {
     "exec": "~/.config/waybar/scripts/connections.py",
     "interval": 5,

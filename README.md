@@ -34,7 +34,6 @@ A Waybar configuration with a dark cyberpunk aesthetic (Tokyo Night / Dracula pa
 | `custom/ports` | Open ports (external vs loopback, risky ports highlighted) |
 | `custom/antivirus` | ClamAV daemon status + threat log |
 | `custom/wifi-pentest` | Wi-Fi interface state, VPN detection, monitor mode |
-| `custom/rogue-ap` | Rogue AP session monitor (requires [rogue-ap](https://github.com/)) |
 
 ### Player
 MPD player controls with album art, track info, and ncmpcpp integration.
@@ -114,7 +113,7 @@ Or set it permanently in your shell profile.
 Remove `custom/vram` from `modules-right` in `config.jsonc` if you don't have an NVIDIA GPU.
 
 ### Security modules not needed
-The security cluster (`connections`, `firewall`, `ports`, `antivirus`, `wifi-pentest`, `rogue-ap`) can be removed from `modules-right` if not needed.
+The security cluster (`connections`, `firewall`, `ports`, `antivirus`, `wifi-pentest`) can be removed from `modules-right` if not needed.
 
 ## Tooltip Style
 
